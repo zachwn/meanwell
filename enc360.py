@@ -1,7 +1,5 @@
 
-from base64 import encode
 from enum import Enum
-from msilib.schema import Error
 from time import sleep
 
 class Eprom(Enum):
