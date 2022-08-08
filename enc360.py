@@ -10,6 +10,7 @@ class Eprom(Enum):
     FV = b'\x43' # float voltage    (stage 3)
     TC = b'\x44' # taper current    (stage 3)
     COMP = b'\x45' # (air) temp comp
+    # read only
     STATUS = b'\x46' # status
     VOUT = b'\x47' # voltage output
     IOUT = b'\x48' # current output
@@ -70,41 +71,6 @@ class Enc360:
         if r != value:
             raise ValueError('Failed to change value')
         return r
-    
-    @property
-    def cc(self)->int:
-        return self.read(Eprom.CC)
-    @cc.setter
-    def cc(self, val)->int:
-        return self.write(self.address(Eprom.CC), val)
-    
-    @property
-    def cv(self)->int:
-        return self.read(Eprom.CV)
-    @cv.setter
-    def cv(self, val)->int:
-        return self.write(self.address(Eprom.CV, val))
-
-    @property
-    def fv(self)->int:
-        return self.read(Eprom.fv)
-    @fv.setter
-    def fv(self, val)->int:
-        return self.write(self.address(Eprom.FV, val))
-    
-    @property
-    def tc(self)->int:
-        return self.read(Eprom.TC)
-    @tc.setter
-    def tc(self, val)->int:
-        return self.write(self.address(Eprom.TC, val))
-    
-    @property
-    def comp(self)->int:
-        return self.read(Eprom.COMP)
-    @comp.setter
-    def comp(self, val):
-        return self.write(Eprom.COMP, val)
 
     
     
